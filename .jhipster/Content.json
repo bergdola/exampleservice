@@ -1,0 +1,42 @@
+{
+  "applications": ["exampleservice"],
+  "changelogDate": "20230506065701",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "content",
+  "fields": [
+    {
+      "fieldName": "contentId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "contentName",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "rewardPoints",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "workedOn",
+      "fieldType": "Boolean"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Content",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityField": "chapterTitle",
+      "otherEntityName": "chapter",
+      "otherEntityRelationshipName": "content",
+      "relationshipName": "chapter",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}

@@ -1,0 +1,67 @@
+application {
+  config {
+    baseName exampleservice,
+    packageName de.unistuttgart.iste.gits,
+    applicationType monolith,
+    authenticationType jwt,
+    buildTool gradle,
+    serverPort 8080,
+    skipClient true,
+    skipServer false,
+    skipUserManagement false,
+    databaseType sql,
+    prodDatabaseType postgresql,
+    devDatabaseType h2Disk,
+    languages [en],
+    nativeLanguage en,
+    testFrameworks [cucumber],
+    enableSwaggerCodegen true,
+    //messageBroker no,
+    //searchEngine no,
+    // serviceDiscoveryType eureka,
+    //websocket no
+    // for all possible application config settings refer to https://www.jhipster.tech/jdl/applications#options-in-applications and https://www.jhipster.tech/jdl/applications#microservice-workflow 
+  }
+  entities *
+}
+
+
+entity Course {
+  courseId     String required unique
+  courseTitle String required
+  courseDescription   String 
+  startDate LocalDate
+  endDate LocalDate
+  publishState Boolean
+}
+
+entity Chapter {
+  chapterId     String required unique
+  chapterTitle String required
+  chapterDescription   String 
+  chaperNumber Integer
+  startDate LocalDate
+  endDate LocalDate
+}
+
+entity Content {
+  contentId String required unique
+  contentName String required
+  rewardPoints Integer
+  workedOn Boolean
+}
+
+
+
+relationship OneToMany  {
+  Course{chapter}              to Chapter{course(courseTitle)}
+  Chapter{content}             to Content{chapter(chapterTitle)}
+}
+
+paginate * with pagination
+
+filter *
+dto * with mapstruct
+
+
+

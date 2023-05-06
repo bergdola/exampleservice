@@ -1,0 +1,56 @@
+{
+  "applications": ["exampleservice"],
+  "changelogDate": "20230506065601",
+  "dto": "mapstruct",
+  "embedded": false,
+  "entityTableName": "chapter",
+  "fields": [
+    {
+      "fieldName": "chapterId",
+      "fieldType": "String",
+      "fieldValidateRules": ["required", "unique"]
+    },
+    {
+      "fieldName": "chapterTitle",
+      "fieldType": "String",
+      "fieldValidateRules": ["required"]
+    },
+    {
+      "fieldName": "chapterDescription",
+      "fieldType": "String"
+    },
+    {
+      "fieldName": "chaperNumber",
+      "fieldType": "Integer"
+    },
+    {
+      "fieldName": "startDate",
+      "fieldType": "LocalDate"
+    },
+    {
+      "fieldName": "endDate",
+      "fieldType": "LocalDate"
+    }
+  ],
+  "fluentMethods": true,
+  "jpaMetamodelFiltering": true,
+  "name": "Chapter",
+  "pagination": "pagination",
+  "readOnly": false,
+  "relationships": [
+    {
+      "otherEntityName": "content",
+      "otherEntityRelationshipName": "chapter",
+      "relationshipName": "content",
+      "relationshipType": "one-to-many"
+    },
+    {
+      "otherEntityField": "courseTitle",
+      "otherEntityName": "course",
+      "otherEntityRelationshipName": "chapter",
+      "relationshipName": "course",
+      "relationshipType": "many-to-one"
+    }
+  ],
+  "service": "serviceClass"
+}
